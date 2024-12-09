@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:local_search/homepage/home_page.dart';
+import 'package:local_search/ui/pages/homepage/home_page.dart';
 
 void main() {
   runApp(const LocalSearchApp());
@@ -14,9 +14,9 @@ class LocalSearchApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/Homepage': (context) => HomeScreen(),
+        '/Homepage': (context) => const HomeScreen(),
       },
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }

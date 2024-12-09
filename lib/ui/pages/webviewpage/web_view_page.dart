@@ -9,6 +9,7 @@ class WebViewPage extends StatelessWidget {
       appBar: AppBar(
         //back button
         automaticallyImplyLeading: true,
+        //title could exist as a personal add on feature
       ),
       body: GestureDetector(
         child: InAppWebView(

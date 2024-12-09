@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:local_search/homepage/widgets/home_page_widget.dart';
+import 'package:local_search/ui/pages/homepage/widgets/home_page_widget.dart';
 
 class HomeScreen extends StatefulWidget{
   const HomeScreen({super.key});
@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           actions: [
             GestureDetector(
               onTap: () {
@@ -73,11 +74,23 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         body: SafeArea(
-          child: ListView(
-            padding: const EdgeInsets.all(12),
-            children: [
-              Attractions(),
-            ],
+          child: ListView.separated(
+            padding: const EdgeInsets.all(20),
+            scrollDirection: Axis.vertical,
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  
+                },
+                child: Container(
+                  height: 50,
+                  color: Colors.white,
+                  child: Attractions(),
+                ),
+              );
+            }, 
+            separatorBuilder: (BuildContext context, int index) => const Divider(), 
+            itemCount: .length, //length of the outcome
           ),
         ),
         
