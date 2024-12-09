@@ -1,28 +1,36 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:local_search/ui/pages/homepage/home_view_model.dart';
 import 'package:local_search/ui/pages/homepage/widgets/home_page_widget.dart';
+import 'package:local_search/ui/pages/webviewpage/web_view_page.dart';
 
-class HomeScreen extends StatefulWidget{
+class HomeScreen extends ConsumerStatefulWidget{
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   //text controller
   TextEditingController textEditingController = TextEditingController();
 
   //Search with Input
   void onSearch(String text) {
+
     // call json for returning the list of items
-    print('well done');
+    //call [Home View Model] searchLocal method 
+    
+    ref.read(homeViewModelProvider.notifier).searchLocals(text);
+
+    print('well done with onSearch');
   }
   //when the widget disappears from the screen
   //defining the action through dispose function
   //This will delete the input text when an action is taken
   void dispose() {
-    //mandatory for using textEditingControler
+    //mandatory for using textEditingController
     textEditingController.dispose();
     super.dispose(); 
 
@@ -30,6 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final homeState = ref.watch(homeViewModelProvider);
+
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -78,19 +90,25 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.all(20),
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
+              final local = homeState.localItem[index];
               return GestureDetector(
                 onTap: () {
-                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return WebViewPage(local);
+                    }),
+                  )
                 },
                 child: Container(
                   height: 50,
                   color: Colors.white,
-                  child: Attractions(),
+                  child: Attractions(local),
                 ),
               );
             }, 
             separatorBuilder: (BuildContext context, int index) => const Divider(), 
-            itemCount: .length, //length of the outcome
+            itemCount: homeState.localItem.length, //length of the outcome
           ),
         ),
         

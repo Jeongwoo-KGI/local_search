@@ -1,8 +1,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:local_search/data/model/localsearch.dart';
 
 class WebViewPage extends StatelessWidget {
+  LocalItem local;
+  WebViewPage(this.local);
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,11 +15,12 @@ class WebViewPage extends StatelessWidget {
         //back button
         automaticallyImplyLeading: true,
         //title could exist as a personal add on feature
+        title: Text(local.title),
       ),
       body: GestureDetector(
         child: InAppWebView(
           initialUrlRequest: URLRequest(
-            url: WebUri(""),
+            url: WebUri(local.link),
           ),
           initialSettings: InAppWebViewSettings(
             mediaPlaybackRequiresUserGesture: true,
