@@ -1,16 +1,21 @@
 # local_search
 
-A new Flutter project.
+A new Flutter project to test out the Open APIs and Riverpod StateManagement tools given South Korea as the default location. 
 
-## Getting Started
+This application mainly focuses on implementation of Local Search API provided from NHN Naver.corps while keeping the codes concise in a manner of having MVVM(Model, View, View-Model) structure. 
 
-This project is a starting point for a Flutter application.
+## Functionalities
+- Search nearby sites using Naver OpenAPI 
+- MVVM Architecture kept simple through Riverpod 
+- WebView to show the websites of nearby sites
+- Usage of GPS location
+- VWORLD OpenAPI 
 
-A few resources to get you started if this is your first Flutter project:
+## User Experience
+1. Type in the local area name or through GPS grid location for searching 'near by' 
+2. Click the output of near by potential destinations to check their websites. 
+3. Go back to the Search site. 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
