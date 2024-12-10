@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:local_search/ui/pages/homepage/home_page.dart';
 
 void main() {
-  runApp(ProviderScope(child: LocalSearchApp()));
+  runApp(const ProviderScope(child: LocalSearchApp()));
 }
 
 class LocalSearchApp extends StatelessWidget {

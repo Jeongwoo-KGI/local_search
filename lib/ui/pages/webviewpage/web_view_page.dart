@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:local_search/data/model/localsearch.dart';
 
+// ignore: must_be_immutable
 class WebViewPage extends StatelessWidget {
   LocalItem local;
-  WebViewPage(this.local);
+  WebViewPage(this.local, {super.key});
 
 
   @override

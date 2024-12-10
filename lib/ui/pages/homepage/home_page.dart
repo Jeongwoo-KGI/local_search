@@ -59,7 +59,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 height: 44, // 1% error rate with 44 by 44 size
                 //with the transparent color, it allows the whole container to be tap-able
                 color: Colors.transparent,
-                child: Icon(Icons.search)),
+                child: const Icon(Icons.gps_fixed)),
             ),
           ],
           title: TextField(
@@ -89,6 +89,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           child: ListView.separated(
             padding: const EdgeInsets.all(20),
             scrollDirection: Axis.vertical,
+
             itemBuilder: (BuildContext context, int index) {
               final local = homeState.localItem[index];
               return GestureDetector(
@@ -98,16 +99,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     MaterialPageRoute(builder: (context) {
                       return WebViewPage(local);
                     }),
-                  )
+                  );
                 },
-                child: Container(
-                  height: 50,
-                  color: Colors.white,
+                child: SizedBox(
+                  height: 100,
                   child: Attractions(local),
                 ),
               );
             }, 
-            separatorBuilder: (BuildContext context, int index) => const Divider(), 
+            separatorBuilder: (BuildContext context, int index) => const Divider(thickness: 0, color: Colors.transparent,), 
             itemCount: homeState.localItem.length, //length of the outcome
           ),
         ),
